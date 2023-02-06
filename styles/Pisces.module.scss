@@ -1,0 +1,14 @@
+$color: whitesmoke;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 30%;
+
+  color: $color;
+  fill: $color;
+}
