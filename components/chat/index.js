@@ -4,7 +4,7 @@ export default function Chat() {
     return (
         <>
             <div className={styles.chat}>
-                chat
+                {/* Chat */}
             </div>
             <div className={styles.input}>
 

@@ -2,7 +2,7 @@
 export default function Text() {
     return (
         <div>
-            text
+            text in modal
         </div>
     )
 }

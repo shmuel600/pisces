@@ -1,7 +1,8 @@
 import styles from '@/styles/Modal.module.scss'
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 import Context from '@/contexts/Context'
 import * as React from 'react'
+
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 
 export default function Modal({ component, fullScreen = false, locked = false }) {
   const { setModalOpen } = React.useContext(Context);
@@ -40,7 +41,7 @@ export default function Modal({ component, fullScreen = false, locked = false })
             top: 0,
             minWidth: '100%',
             minHeight: '100%',
-            background: 'rgba(50, 50, 50, 0.2)',
+            background: 'rgba(61, 62, 63, 0.2)',
             scale: '2'
           }}></div>
         </>
