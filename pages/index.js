@@ -5,21 +5,24 @@ import * as React from 'react'
 import Modal from '@/components/_misc/modal'
 import Navigation from '@/components/_misc/navigation'
 import Pisces from '@/components/_misc/pisces'
-import Text from '@/components/_misc/text'
 import Waves from '@/components/_misc/waves'
 import SignInGoogle from '@/components/_misc/signInGoogle'
 
 import { useSession } from "next-auth/react"
 import Head from 'next/head'
-
+import io from 'socket.io-client';
+let socket = io();
 
 export default function Home() {
   const { data: session } = useSession()
-  const [component, setComponent] = React.useState(<Pisces />)
+  const [page, setPage] = React.useState(<Pisces />)
   const [modalOpen, setModalOpen] = React.useState(false)
+  const [modalContent, setModalContent] = React.useState()
   const [user, setUser] = React.useState()
 
-  // log in
+  // const [socket, setSocket] = React.useState(socketIO);
+
+  // log in / sign in
   React.useEffect(() => {
     const logIn = async () => {
       const userDetails = {
@@ -73,13 +76,49 @@ export default function Home() {
       }
     }
     if (user?.email) getLocation();
-  }, [user]);
+  }, [user])
+
+  // open modal
+  React.useEffect(() => {
+    modalContent && setModalOpen(true);
+  }, [modalContent])
+
+  // start socket connection
+  React.useEffect(() => {
+    const startSocket = () => {
+      fetch(`/api/socket`);
+      // TODO: create rooms
+      socket.emit('join', `${'room name'}`);
+
+      // listen to socket events
+      socket.on('new-message', message => {
+        // TODO: display message in chat window
+        setModalContent({ component: message })
+        console.log(message)
+      })
+      // custom event
+      // socket.on('event', () => {
+      //   console.log()
+      // })
+      // return () => {
+      //   socket.emit('disconnected', 'out');
+      // };
+    }
+    if (user) startSocket();
+  }, [user])
+
+
+  const sendMessage = message => {
+    socket.emit('send-message', message)
+  }
 
   return (
     <Context.Provider value={{
       user,
       modalOpen,
-      setModalOpen
+      setModalOpen,
+      setModalContent,
+      sendMessage,
     }}>
 
       <Head>
@@ -97,23 +136,25 @@ export default function Home() {
 
       <main className={styles.main}>
 
-
-        {/* to delete later */}
-        {/* <button
-          onClick={() => setModalOpen(true)}
-          style={{ position: 'fixed', top: 20, right: 6 }}
-        >
-          open modal
-        </button> */}
-
-
-        {component}
+        {page}
         <Waves />
+
         {session ?
-          <Navigation setComponent={setComponent} /> :
+          <Navigation setPage={setPage} /> :
           <SignInGoogle />
         }
-        {modalOpen && <Modal component={<Text />} />}
+
+        {modalOpen &&
+          <Modal
+            modalContent={modalContent.component}
+            fullScreen={modalContent.fullScreen}
+            locked={modalContent.locked}
+          />
+        }
+        {/* use this for modal: 
+        onClick={() => setModalContent({ component: <Text />, fullScreen: true, locked: true})}
+        */}
+
       </main>
 
     </Context.Provider>

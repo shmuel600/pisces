@@ -9,12 +9,12 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer'
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 
-export default function Navigation({ setComponent }) {
+export default function Navigation({ setPage }) {
     const [selected, setSelected] = React.useState();
 
     const handleNavigation = (selection, component) => {
         setSelected(selection);
-        setComponent(component);
+        setPage(component);
     }
 
     return (

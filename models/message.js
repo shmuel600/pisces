@@ -12,6 +12,12 @@ const message = new Schema({
     time: {
         type: Date
     },
+    recieved: {
+        type: Boolean
+    },
+    read: {
+        type: Boolean
+    },
 });
 
 mongoose.models = {};

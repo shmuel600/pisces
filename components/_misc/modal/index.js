@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 
-export default function Modal({ component, fullScreen = false, locked = false }) {
+export default function Modal({ modalContent, fullScreen = false, locked = false }) {
   const { setModalOpen } = React.useContext(Context);
 
   return (
@@ -27,13 +27,13 @@ export default function Modal({ component, fullScreen = false, locked = false })
                 sx={{ cursor: 'pointer', fill: 'gray', position: 'fixed', top: 2, right: 2 }}
               />
             }
-            <div className={styles.fullScreenContent}>{component}</div>
+            <div className={styles.fullScreenContent}>{modalContent}</div>
           </div>
         </>
         :
         <>{/* small modal */}
           <div className={styles.container} onClick={e => e.stopPropagation()}>
-            <div className={styles.content}>{component}</div>
+            <div className={styles.content}>{modalContent}</div>
           </div>
           {/* gray background */}
           <div style={{

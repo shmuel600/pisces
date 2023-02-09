@@ -13,7 +13,6 @@ const socketHandler = async (req, res) => {
         io.on('connect', socket => {
             socket.on('join', newRoom => {
                 socket.join(newRoom)
-                socket.emit('joined', newRoom)
                 socket.on('send', msg => {
                     socket.to(newRoom).emit('new-message', msg)
                 })

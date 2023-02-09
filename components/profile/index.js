@@ -3,7 +3,7 @@ import Context from '@/contexts/Context'
 import * as React from 'react'
 
 import { signOut } from "next-auth/react"
-import Image from 'next/image';
+import Image from 'next/image'
 
 export default function Profile() {
     const { user } = React.useContext(Context);
@@ -17,7 +17,7 @@ export default function Profile() {
             {user.email}
             <br />
             <br />
-            <button onClick={() => signOut('google')}>Sign out</button>
+            <button onClick={() => signOut('google')}>Sign Out</button>
         </div>
     )
 }
