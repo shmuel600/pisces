@@ -2,13 +2,20 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const user = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
     },
-    name: {
+    image: {
         type: String,
         required: true
+    },
+    location: {
+        type: Object
     },
     // gender: {
     //     type: String,
@@ -32,9 +39,7 @@ const user = new Schema({
     // profileImage: {
     //     type: String,
     // },
-    // location: {
-    //     type: Object
-    // },
+
     // matchHistory: {
     //     type: Array
     // }

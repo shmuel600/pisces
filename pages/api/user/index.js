@@ -4,18 +4,20 @@ import User from "@/models/user"
 const handler = async (req, res) => {
     if (req.method === 'POST') {
         const {
+            name,
             email,
-            name
+            image
         } = req.body;
-        if (email && name) {
+        if (name && email && image) {
             const user = await User.findOne({ email });
             if (await User.findOne({ email })) {
                 return res.status(200).send(user);
             }
             else try {
                 const user = new User({
+                    name,
                     email,
-                    name
+                    image
                 });
                 const newUser = await user.save();
                 return res.status(200).send(newUser);

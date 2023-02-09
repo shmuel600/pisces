@@ -24,7 +24,8 @@ export default function Home() {
     const logIn = async () => {
       const userDetails = {
         name: session?.user?.name,
-        email: session?.user?.email
+        email: session?.user?.email,
+        image: session?.user?.image
       }
       try {
         const fetchedUser = await fetch("/api/user", {
@@ -42,6 +43,37 @@ export default function Home() {
     logIn();
   }, [session])
 
+  // update user location
+  React.useEffect(() => {
+    const getLocation = () => {
+      let location;
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          location = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          };
+          updateLocation(location);
+        }
+      )
+    }
+    const updateLocation = async (location) => {
+      try {
+        const fetchedUser = await fetch(`/api/user/${user?.email}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ location })
+        });
+        // if need user to have its location accessed: 
+        // const json = await fetchedUser.json();
+        // setUser(json);
+      }
+      catch (error) {
+        console.log(error.message);
+      }
+    }
+    if (user?.email) getLocation();
+  }, [user]);
 
   return (
     <Context.Provider value={{
