@@ -10,7 +10,7 @@ import SignInGoogle from '@/components/_misc/signInGoogle'
 
 import { useSession } from "next-auth/react"
 import Head from 'next/head'
-import io from 'socket.io-client';
+import io from 'socket.io-client'
 let socket = io();
 
 export default function Home() {
@@ -91,10 +91,9 @@ export default function Home() {
       socket.emit('join', `${'room name'}`);
 
       // listen to socket events
-      socket.on('new-message', message => {
+      socket.on('new-message', msg => {
         // TODO: display message in chat window
-        setModalContent({ component: message })
-        console.log(message)
+        setModalContent({ component: msg });
       })
       // custom event
       // socket.on('event', () => {

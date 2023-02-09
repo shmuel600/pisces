@@ -3,7 +3,7 @@ import { Server } from 'socket.io'
 
 const socketHandler = async (req, res) => {
     if (res.socket.server.io) {
-        console.log('Socket is already running')
+        // console.log('Socket is already running')
     }
     else {
         console.log('Socket is initializing')
@@ -13,7 +13,7 @@ const socketHandler = async (req, res) => {
         io.on('connect', socket => {
             socket.on('join', newRoom => {
                 socket.join(newRoom)
-                socket.on('send', msg => {
+                socket.on('send-message', msg => {
                     socket.to(newRoom).emit('new-message', msg)
                 })
             })

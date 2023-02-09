@@ -9,7 +9,9 @@ export default function Chat() {
     const messageContent = React.useRef();
 
     const handleSend = () => {
-        sendMessage(messageContent.current.value)
+        if (messageContent.current.value !== '') {
+            sendMessage(messageContent.current.value)
+        }
         messageContent.current.value = '';
     }
 
@@ -25,6 +27,12 @@ export default function Chat() {
                         className={styles.input}
                         placeholder={"Type Message Here..."}
                         ref={messageContent}
+                        onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                handleSend();
+                            }
+                        }}
                     />
                 </div>
 
