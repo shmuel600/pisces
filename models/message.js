@@ -6,6 +6,9 @@ const message = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Chat'
     },
+    content: {
+        type: String
+    },
     sender: {
         type: String
     },

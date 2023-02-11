@@ -17,6 +17,10 @@ const user = new Schema({
     location: {
         type: Object
     },
+    chats: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Chat'
+    }],
     // gender: {
     //     type: String,
     //     required: true

@@ -1,14 +1,7 @@
 @import 'theme';
 
-.chat {
-  background-color: $darkgray-overlay;
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
 
-  height: 60vh;
-  width: 40rem;
-  max-width: 95%;
-}
+// input
 
 .inputArea {
   border-radius: 4vh;
@@ -67,3 +60,47 @@
   align-items: center;
 }
 
+
+// messages
+
+.chatContainer {
+  background-color: $darkgray-overlay;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+
+  height: 60vh;
+  width: 40rem;
+  max-width: 95%;
+
+  padding: 0.5rem;
+}
+
+.chatWindow {
+  height: 100%;
+  width: 100%;
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: scroll;
+}
+
+.message {
+  width: fit-content;
+  min-width: 4rem;
+  max-width: 75%;
+  border-radius: 15px;
+  padding: 0.5rem;
+  margin: 0.2rem;
+}
+
+.sender {
+  background-color: #3ebae0;
+  }
+
+.reciever {
+  background-color: #9db4c7;
+  align-self: flex-end;
+}

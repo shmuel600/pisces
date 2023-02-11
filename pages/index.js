@@ -19,6 +19,7 @@ export default function Home() {
   const [modalOpen, setModalOpen] = React.useState(false)
   const [modalContent, setModalContent] = React.useState()
   const [user, setUser] = React.useState()
+  const [messages, setMessages] = React.useState([])
 
   // const [socket, setSocket] = React.useState(socketIO);
 
@@ -91,9 +92,14 @@ export default function Home() {
       socket.emit('join', `${'room name'}`);
 
       // listen to socket events
-      socket.on('new-message', msg => {
+      socket.on('new-message', message => {
         // TODO: display message in chat window
-        setModalContent({ component: msg });
+        // setModalContent({ component: message });
+        addMessageToChat(message);
+      })
+      socket.on('new-match', matchDetails => {
+        // TODO: get notified for new matches, add to server side
+        setModalContent({ component: matchDetails });
       })
       // custom event
       // socket.on('event', () => {
@@ -104,11 +110,30 @@ export default function Home() {
       // };
     }
     if (user) startSocket();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
 
   const sendMessage = message => {
-    socket.emit('send-message', message)
+    const fullDate = new Date();
+    const time = fullDate.toLocaleTimeString('en-US',
+      {
+        hour12: false,
+        hour: "numeric",
+        minute: "numeric"
+      })
+    const newMessages = [...messages, {
+      content: message,
+      time,
+      sender: user?.name
+    }]
+    socket.emit('send-message', newMessages)
+    addMessageToChat(newMessages);
+  }
+
+  const addMessageToChat = message => {
+    // TODO: add message to messages array, either if sent or if recieved
+    setMessages(message)
   }
 
   return (
@@ -118,6 +143,7 @@ export default function Home() {
       setModalOpen,
       setModalContent,
       sendMessage,
+      messages
     }}>
 
       <Head>
