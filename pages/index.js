@@ -11,7 +11,7 @@ import SignInGoogle from '@/components/_misc/signInGoogle'
 import { useSession } from "next-auth/react"
 import Head from 'next/head'
 import io from 'socket.io-client'
-// let socket = io();
+
 
 export default function Home() {
   const { data: session } = useSession()
@@ -29,7 +29,12 @@ export default function Home() {
       const userDetails = {
         name: session?.user?.name,
         email: session?.user?.email,
-        image: session?.user?.image
+        image: session?.user?.image,
+        findMe: {
+          gender: 'Everyone',
+          age: [20, 30],
+          distance: 40
+        }
       }
       try {
         const fetchedUser = await fetch("/api/user", {
@@ -41,7 +46,7 @@ export default function Home() {
         setUser(json);
       }
       catch (error) {
-        console.log(error.message);
+        console.log(error.message, "in: index");
       }
     }
     logIn();
@@ -63,7 +68,7 @@ export default function Home() {
     }
     const updateLocation = async (location) => {
       try {
-        const fetchedUser = await fetch(`/api/user/${user?.email}`, {
+        const fetchedUser = await fetch(`/api/user/${user?._id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ location })
@@ -165,7 +170,7 @@ export default function Home() {
         <Waves />
 
         {session ?
-          <Navigation setPage={setPage} /> :
+          (user && <Navigation setPage={setPage} />) :
           <SignInGoogle />
         }
 
@@ -176,6 +181,7 @@ export default function Home() {
             locked={modalContent.locked}
           />
         }
+
         {/* use this for modal: 
         onClick={() => setModalContent({ component: <Text />, fullScreen: true, locked: true})}
         */}

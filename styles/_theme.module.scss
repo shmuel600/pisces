@@ -1,0 +1,18 @@
+ // app background
+$background-gradient: linear-gradient(45deg, #56c0e0, #0b94be, #016887, #065871);
+
+// chat background
+$chat-background: #b9bfc480; 
+
+// page background
+$page-background: #ffffff; // white
+
+// theme color
+$main: #5dd1f5; // blue
+$darkgray: #899eb1; // other users messages
+$shadow: #b9bfc480; // like chat background
+$placeholder: #cdd3d8; // light gray
+
+:export {
+    pageBackground: $page-background;
+}

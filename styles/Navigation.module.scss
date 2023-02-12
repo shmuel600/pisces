@@ -1,4 +1,4 @@
-@import 'theme';
+@import 'theme.module';
 
 .center {
   display: flex;
@@ -18,9 +18,12 @@
 }
 
 .defaultColor {
-  fill: $lightgray !important;
+  fill: $chat-background !important;
+  transition: all .4s ease-in-out 0.4s;
 }
 
 .selectedColor {
-  fill: $lightblue !important;
+  fill: $main !important;
+  transition: all .4s ease-in-out 0.4s;
+  opacity: 0.6;
 }

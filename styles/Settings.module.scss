@@ -1,4 +1,4 @@
-@import 'theme';
+@import 'theme.module';
 
 .container {
   display: flex;
@@ -8,8 +8,8 @@
   min-width: 350px;
   max-width: 70%;
   min-height: 70vh;
-  box-shadow: 0px 0px 100px 1px $darkgray-overlay;
-  background-color: white;
+  box-shadow: 0px 0px 100px 1px $shadow;
+  background-color: $page-background;
   border-radius: 0.5rem;
 }
 
@@ -17,4 +17,37 @@
   .container {
     min-width: 90%;
   }
+}
+
+.settingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  padding: 0.5rem;
+}
+
+.slider {
+  width: 70% !important;
+  color: $main !important;
+}
+
+.choice {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0.4rem;
+  padding-right: 0.6rem;
+  padding-left: 0.6rem;
+  border-radius: 15px;
+  color: $placeholder;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .4s ease-in-out;
+}
+
+.choiceSelected {
+  background-color: $main;
+  color: white;
+  transition: all .4s ease-in-out 0.2s;
+  box-shadow: 0 0 4px 0 $shadow;
 }

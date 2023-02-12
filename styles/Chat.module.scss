@@ -1,4 +1,4 @@
-@import 'theme';
+@import 'theme.module';
 
 
 // input
@@ -19,7 +19,7 @@
 }
 
 .inputContainer {
-  background-color: $darkgray-overlay;
+  background-color: $chat-background;
   border-radius: 4vh;
 
   min-height: 8vh;
@@ -46,12 +46,12 @@
 }
 
 .input::placeholder {
-  color: $lightgray;
+  color: $placeholder;
 }
 
 .sendButton {
   cursor: pointer;
-  background-color: $darkgray-overlay;
+  background-color: $main;
   border-radius: 50%;
   min-width: 8vh;
   min-height: 8vh;
@@ -64,7 +64,7 @@
 // messages
 
 .chatContainer {
-  background-color: $darkgray-overlay;
+  background-color: $chat-background;
   backdrop-filter: blur(10px);
   border-radius: 20px;
 
@@ -107,10 +107,10 @@
 // }
 
 .sender {
-  background-color: #3caacc;
+  background-color: $main;
   }
 
 .reciever {
-  background-color: #899eb1;
+  background-color: $darkgray;
   align-self: flex-end;
 }

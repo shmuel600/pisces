@@ -1,6 +1,7 @@
 import styles from '@/styles/Waves.module.scss'
+import { pageBackground as color } from '@/styles/_theme.module.scss'
 
-export default function Waves({ color = 'white' }) {
+export default function Waves() {
     return (
         <div className={styles.container}>
             <svg className={styles.waves} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"

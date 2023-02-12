@@ -3,26 +3,25 @@ import User from "@/models/user"
 
 const handler = async (req, res) => {
 
-    const { email } = req.query;
-
+    const { id } = req.query;
 
     if (req.method === 'PATCH') {
         try {
-            const updatedUser = await User.findOneAndUpdate(email, req.body);
+            const updatedUser = await User.findByIdAndUpdate(id, req.body);
             return res.status(200).send(updatedUser);
         }
         catch (error) {
-            return res.status(500).send(error.message);
+            return res.status(500).send("user[id]patch", error.message);
         }
     }
 
     else if (req.method === 'GET') {
         try {
-            const user = await User.findOne(email);
+            const user = await User.findById(id);
             return res.status(200).send(user);
         }
         catch (error) {
-            return res.status(500).send(error.message);
+            return res.status(500).send("user[id]get", error.message);
         }
     }
 

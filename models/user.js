@@ -21,6 +21,12 @@ const user = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Chat'
     }],
+    findMe: {
+        gender: { type: String, required: true },
+        age: { type: Array, required: true },
+        distance: { type: Number, required: true },
+    },
+
     // gender: {
     //     type: String,
     //     required: true
@@ -29,21 +35,17 @@ const user = new Schema({
     //     type: Date,
     //     required: true
     // },
-    // findMe: {
-    //     gender: { type: String, required: true },
-    //     age: { type: Array, required: true },
-    //     distance: { type: Number, required: true },
-    // },
+
     // bio: {
     //     type: String
     // },
     // hobbies: {
     //     type: Array
     // },
+
     // profileImage: {
     //     type: String,
     // },
-
     // matchHistory: {
     //     type: Array
     // }
