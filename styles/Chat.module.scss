@@ -80,6 +80,7 @@
   width: 100%;
 
   color: white;
+  font-weight: 400;
 
   display: flex;
   flex-direction: column;
@@ -96,11 +97,20 @@
   margin: 0.2rem;
 }
 
+// .sender {
+//   background-color: #3294b1;
+//   }
+
+// .reciever {
+//   background-color: #728290;
+//   align-self: flex-end;
+// }
+
 .sender {
-  background-color: #3ebae0;
+  background-color: #3caacc;
   }
 
 .reciever {
-  background-color: #9db4c7;
+  background-color: #899eb1;
   align-self: flex-end;
 }

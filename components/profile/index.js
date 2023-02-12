@@ -12,9 +12,9 @@ export default function Profile() {
         <div className={styles.container}>
             <Image src={user?.image} alt="" width={120} height={120} style={{ borderRadius: '50%' }} />
             <br />
-            {user.name}
+            {user?.name}
             <br />
-            {user.email}
+            {user?.email}
             <br />
             <br />
             <button onClick={() => signOut('google')}>Sign Out</button>

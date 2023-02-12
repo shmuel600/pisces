@@ -11,7 +11,7 @@ import SignInGoogle from '@/components/_misc/signInGoogle'
 import { useSession } from "next-auth/react"
 import Head from 'next/head'
 import io from 'socket.io-client'
-let socket = io();
+// let socket = io();
 
 export default function Home() {
   const { data: session } = useSession()
@@ -21,7 +21,7 @@ export default function Home() {
   const [user, setUser] = React.useState()
   const [messages, setMessages] = React.useState([])
 
-  // const [socket, setSocket] = React.useState(socketIO);
+  const [socket] = React.useState(io());
 
   // log in / sign in
   React.useEffect(() => {
@@ -147,9 +147,9 @@ export default function Home() {
     }}>
 
       <Head>
-        <title>Pisces Dating</title>
+        <title>Pisces</title>
         <meta
-          name="Pisces Dating"
+          name="Pisces"
           content="
           A dating app created using NextJS, SocketIO & Cloudinary. 
           The app includes user sign up & Google authentication, 

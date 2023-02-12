@@ -2,6 +2,7 @@ import connectDB from "@/middleware/mongodb"
 import User from "@/models/user"
 
 const handler = async (req, res) => {
+
     if (req.method === 'POST') {
         const {
             name,
@@ -27,6 +28,7 @@ const handler = async (req, res) => {
             }
         }
     }
+
     else if (req.method === 'GET') {
         console.log("GET all users");
         try {
@@ -37,9 +39,12 @@ const handler = async (req, res) => {
             return res.status(500).send(error.message);
         }
     }
+
     else {
         res.status(422).send('req_method_not_supported');
     }
+
+    res.end();
 };
 
 export default connectDB(handler);
