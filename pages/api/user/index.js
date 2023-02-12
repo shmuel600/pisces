@@ -5,34 +5,31 @@ const handler = async (req, res) => {
 
     if (req.method === 'POST') {
 
-        const { email } = req.body;
+        const {
+            name,
+            email,
+            image,
+            findMe
+        } = req.body;
 
-        const userExists = await User.findOne({ email });
-        if (email && userExists) { // user already exists
-            return res.status(200).send(userExists); // return existing user
-        }
-
-        else { // create a new user
-            const {
-                name,
-                image,
-                findMe
-            } = req.body;
-            if (name && email && image && findMe) {
-                try {
-                    const user = new User({
-                        name,
-                        email,
-                        image,
-                        findMe
-                    });
-                    const newUser = await user.save();
-                    return res.status(200).send(newUser);
-                }
-                catch (error) {
-                    return res.status(500).send("user[s]post", error.message);
-                }
+        if (name && email && image && findMe) {
+            try {
+                const existingUser = await User.findOne({ email })
+                const userDetails = new User({
+                    name,
+                    email,
+                    image,
+                    findMe
+                });
+                const user = existingUser ? existingUser : await userDetails.save();
+                return res.status(200).send(user);
             }
+            catch (error) {
+                return res.status(500).send("user[s]post", error.message);
+            }
+        }
+        else {
+            await res.status(422).send('data_incomplete');
         }
     }
 

@@ -49,7 +49,7 @@ export default function Home() {
         console.log(error.message, "in: index");
       }
     }
-    logIn();
+    session && logIn();
   }, [session])
 
   // update user location
