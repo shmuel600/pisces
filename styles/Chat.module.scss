@@ -60,6 +60,16 @@
   align-items: center;
 }
 
+.sendButtonClick {
+  animation: grow .6s;
+}
+
+@keyframes grow {
+  0% { scale: 1}
+  40% { scale: 1.1}
+  100% { scale: 1}
+}
+
 
 // messages
 
@@ -108,6 +118,9 @@
   align-self: flex-end;
 }
 
+
+// scroll to bottom of chat
+
 .scrollDownContainer {
   display: flex;
   flex-direction: column;
@@ -126,15 +139,15 @@
 .visible {
   opacity: 1;
   margin-top: 0;
-  animation: grow .4s ease-in-out;
+  animation: fade-grow .4s ease-in-out;
 }
 
 .hidden {
   opacity: 0;
-  animation: shrink .4s ease-in-out;
+  animation: fade-shrink .4s ease-in-out;
 }
 
-@keyframes grow {
+@keyframes fade-grow {
   0% {
     margin-top: 1px;
     scale: 0.8;
@@ -149,7 +162,7 @@
   }
 }
 
-@keyframes shrink {
+@keyframes fade-shrink {
   0% {
     scale: 1;
     opacity: 1;

@@ -5,12 +5,16 @@ import * as React from 'react'
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 
 export default function Input() {
-    const { sendMessage } = React.useContext(Context);
-    const messageContent = React.useRef();
+    const { sendMessage } = React.useContext(Context)
+    const messageContent = React.useRef()
+    const [sendAnimation, setSendAnimation] = React.useState(false)
 
     const handleSend = () => {
         if (messageContent.current.value !== '') {
             sendMessage(messageContent.current.value)
+            // add animation on send
+            setSendAnimation(true);
+            setTimeout(() => setSendAnimation(false), 400)
         }
         messageContent.current.value = '';
     }
@@ -36,7 +40,7 @@ export default function Input() {
 
                 {/* send button */}
                 <div
-                    className={styles.sendButton}
+                    className={`${styles.sendButton} ${sendAnimation && styles.sendButtonClick}`}
                     onClick={handleSend}
                 >
                     <SendRoundedIcon htmlColor='white' />
