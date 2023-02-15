@@ -6,12 +6,16 @@ $chat-background: #b9bfc480;
 
 // page background
 $page-background: #ffffff; // white
+// $page-background: #3c3e3f; // dark
 
 // theme color
-$main: #5dd1f5; // blue
-$darkgray: #899eb1; // other users messages
+// $main: #5dd1f5; // blue
+$main: #57cdf0; // blue 
+// $recieved-messages: #899eb1; // other users messages
 $shadow: #b9bfc480; // like chat background
 $placeholder: #cdd3d8; // light gray
+$text: rgb(130, 133, 134);
+// $dark-text: rgb(237, 237, 237);
 
 :export {
     pageBackground: $page-background;

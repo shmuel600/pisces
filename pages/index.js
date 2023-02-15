@@ -120,16 +120,9 @@ export default function Home() {
 
 
   const sendMessage = message => {
-    const fullDate = new Date();
-    const time = fullDate.toLocaleTimeString('en-US',
-      {
-        hour12: false,
-        hour: "numeric",
-        minute: "numeric"
-      })
     const newMessages = [...messages, {
       content: message,
-      time,
+      time: new Date(),
       sender: user?.name
     }]
     socket.emit('send-message', newMessages)

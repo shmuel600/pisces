@@ -111,6 +111,18 @@
   }
 
 .reciever {
-  background-color: $darkgray;
+  background-color: $page-background;
+  color: $text;
+  font-weight: 300;
+  // color: $placeholder;
   align-self: flex-end;
+}
+
+.scrollDown {
+  background-color: $shadow !important;
+  align-self: flex-end;
+}
+
+.scrollDownIcon {
+  fill: $page-background !important;
 }
