@@ -13,7 +13,7 @@ export default function Messages() {
     const chatBottom = React.useRef()
     const isChatBottomVisible = useVisible(chatBottom)
     const [autoScroll, setAutoScroll] = React.useState(true)
-    const [timer, setTimer] = React.useState(false);
+    const [timer, setTimer] = React.useState(true);
 
     // scroll to bottom on new messages
     React.useEffect(() => {
