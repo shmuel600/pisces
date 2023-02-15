@@ -97,15 +97,6 @@
   margin: 0.2rem;
 }
 
-// .sender {
-//   background-color: #3294b1;
-//   }
-
-// .reciever {
-//   background-color: #728290;
-//   align-self: flex-end;
-// }
-
 .sender {
   background-color: $main;
   }
@@ -114,8 +105,13 @@
   background-color: $page-background;
   color: $text;
   font-weight: 300;
-  // color: $placeholder;
   align-self: flex-end;
+}
+
+.scrollDownContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .scrollDown {
@@ -125,4 +121,49 @@
 
 .scrollDownIcon {
   fill: $page-background !important;
+}
+
+.visible {
+  opacity: 1;
+  margin-top: 0;
+  animation: grow .4s ease-in-out;
+}
+
+.hidden {
+  opacity: 0;
+  animation: shrink .4s ease-in-out;
+}
+
+@keyframes grow {
+  0% {
+    margin-top: 1px;
+    scale: 0.8;
+    opacity: 0;
+  }
+  80% {
+    scale: 1.15;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  10% {
+    scale: 1.15;
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: 1px;
+    scale: 0.8;
+    opacity: 0;
+  }
 }

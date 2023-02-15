@@ -68,17 +68,17 @@ export default function Messages() {
             </div>
 
             {/* Scroll Down Action  */}
-            <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                {!autoScroll &&
-                    <IconButton
-                        onClick={scrollToBottom}
-                        sx={{ mt: -4 }}
-                        className={styles.scrollDown}
-                        size='small'
-                    >
-                        <KeyboardArrowDownRoundedIcon className={styles.scrollDownIcon} />
-                    </IconButton>
-                }
+            <div className={styles.scrollDownContainer}>
+                {/* {!autoScroll && */}
+                <IconButton
+                    onClick={scrollToBottom}
+                    sx={{ mt: -4 }}
+                    className={`${styles.scrollDown} ${!autoScroll ? styles.visible : styles.hidden}`}
+                    size='small'
+                >
+                    <KeyboardArrowDownRoundedIcon className={styles.scrollDownIcon} />
+                </IconButton>
+                {/* } */}
             </div>
 
         </div>
