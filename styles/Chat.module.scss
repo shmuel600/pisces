@@ -142,10 +142,10 @@
   animation: fade-grow .4s ease-in-out;
 }
 
-.hidden {
-  opacity: 0;
-  animation: fade-shrink .4s ease-in-out;
-}
+// .hidden {
+//   opacity: 0;
+//   animation: fade-shrink .4s ease-in-out;
+// }
 
 @keyframes fade-grow {
   0% {
