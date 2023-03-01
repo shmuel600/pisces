@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "client:build": "yarn --cwd client run build",
-    "client:install": "yarn --cwd client add react-scripts --save"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
