@@ -88,36 +88,35 @@ export default function Home() {
   React.useEffect(() => {
     modalContent && setModalOpen(true);
   }, [modalContent])
-  /*
-    // start socket connection
-    React.useEffect(() => {
-      const startSocket = () => {
-        fetch(`/api/socket`);
-        // TODO: create rooms
-        socket.emit('join', `${'room name'}`);
-  
-        // listen to socket events
-        socket.on('new-message', message => {
-          // TODO: display message in chat window
-          // setModalContent({ component: message });
-          addMessageToChat(message);
-        })
-        socket.on('new-match', matchDetails => {
-          // TODO: get notified for new matches, add to server side
-          setModalContent({ component: matchDetails });
-        })
-        // custom event
-        // socket.on('event', () => {
-        //   console.log()
-        // })
-        // return () => {
-        //   socket.emit('disconnected', 'out');
-        // };
-      }
-      if (user) startSocket();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user])
-  */
+
+  // start socket connection
+  React.useEffect(() => {
+    const startSocket = () => {
+      fetch(`/api/socket`);
+      // TODO: create rooms
+      socket.emit('join', `${'room name'}`);
+
+      // listen to socket events
+      socket.on('new-message', message => {
+        // TODO: display message in chat window
+        // setModalContent({ component: message });
+        addMessageToChat(message);
+      })
+      socket.on('new-match', matchDetails => {
+        // TODO: get notified for new matches, add to server side
+        setModalContent({ component: matchDetails });
+      })
+      // custom event
+      // socket.on('event', () => {
+      //   console.log()
+      // })
+      // return () => {
+      //   socket.emit('disconnected', 'out');
+      // };
+    }
+    if (user) startSocket();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
 
   const sendMessage = message => {
     const newMessages = [...messages, {
