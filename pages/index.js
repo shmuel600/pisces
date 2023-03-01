@@ -125,7 +125,7 @@ export default function Home() {
       time: new Date(),
       sender: user?.name
     }]
-    socket.emit('send-message', newMessages)
+    // socket.emit('send-message', newMessages)
     addMessageToChat(newMessages);
   }
 
