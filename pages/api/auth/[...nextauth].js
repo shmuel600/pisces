@@ -11,7 +11,7 @@ export default NextAuth({
         }),
         // ...add more providers here
     ],
-    secret: process.env.NEXT_PUBLIC_NEXTAUTH_URL,
+    secret: process.env.NEXT_PUBLIC_SECRET,
     theme: {
         colorScheme: "light",
     },
