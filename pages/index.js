@@ -118,7 +118,6 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
-
   const sendMessage = message => {
     const newMessages = [...messages, {
       content: message,
