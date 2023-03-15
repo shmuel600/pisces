@@ -21,7 +21,12 @@ export default function Home() {
   const [user, setUser] = React.useState()
   const [messages, setMessages] = React.useState([])
 
-  const [socket] = React.useState(io());
+  const [defaultHeight, setDefaultHeight] = React.useState()
+  const [currentHeight, setCurrentHeight] = React.useState()
+
+  const [socket] = React.useState(io())
+
+  const showNavigation = (Math.abs(currentHeight - defaultHeight) < defaultHeight * 0.2)
 
   // log in / sign in
   React.useEffect(() => {
@@ -118,6 +123,26 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
+  // check if keyboard is open on mobile devices
+  React.useEffect(() => {
+    // get device default height and current height
+    setDefaultHeight(globalThis.innerHeight);
+    setCurrentHeight(globalThis.innerHeight)
+
+    // check if height changed
+    const handleResize = () => {
+      if (globalThis.innerWidth < 768) {
+        setCurrentHeight(globalThis.innerHeight)
+      }
+    };
+
+    globalThis.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => globalThis.removeEventListener('resize', handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const sendMessage = message => {
     const newMessages = [...messages, {
       content: message,
@@ -159,10 +184,10 @@ export default function Home() {
       <main className={styles.main}>
 
         {page}
-        <Waves />
+        {showNavigation && <Waves />}
 
         {session ?
-          (user && <Navigation setPage={setPage} />) :
+          (user && showNavigation && <Navigation setPage={setPage} />) :
           <SignInGoogle />
         }
 
