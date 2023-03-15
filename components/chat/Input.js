@@ -9,6 +9,8 @@ export default function Input() {
     const messageContent = React.useRef()
     const [sendAnimation, setSendAnimation] = React.useState(false)
 
+    React.useEffect(() => { messageContent.current.focus; }, [])
+
     const handleSend = () => {
         if (messageContent.current.value !== '') {
             sendMessage(messageContent.current.value)
