@@ -16,6 +16,7 @@ export default function Input() {
             setSendAnimation(true);
             setTimeout(() => setSendAnimation(false), 400)
         }
+        messageContent.current.focus();
         messageContent.current.value = '';
     }
 

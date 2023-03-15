@@ -26,7 +26,7 @@ export default function Home() {
 
   const [socket] = React.useState(io())
 
-  const showNavigation = (Math.abs(currentHeight - defaultHeight) < defaultHeight * 0.2)
+  const showNavigation = (Math.abs(currentHeight - defaultHeight) < defaultHeight * 0.1)
 
   // log in / sign in
   React.useEffect(() => {
