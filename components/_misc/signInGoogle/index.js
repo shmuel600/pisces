@@ -15,7 +15,7 @@ export default function SignInGoogle() {
             onMouseEnter={handleIcon}
             onMouseLeave={handleIcon}
             className={styles.signInButton}
-            style={{ position: 'fixed', top: '60vh' }}
+            style={{ position: 'fixed', top: '60%' }}
         >
             <GoogleIcon color={white} className={styles.icon} />
             <div style={{ paddingBottom: 4, paddingLeft: 8 }}>Sign In With Google</div>
