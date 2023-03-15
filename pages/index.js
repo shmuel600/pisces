@@ -183,7 +183,10 @@ export default function Home() {
 
       <main className={styles.main}>
 
-        {page}
+        <div className={styles.page}>
+          {page}
+        </div>
+
         {showNavigation && <Waves />}
 
         {session ?
