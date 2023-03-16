@@ -4,4 +4,9 @@
     :has(input:focus) .footer {
         display: none !important;
     }
+    :has(input:focus) .main,
+    :has(input:focus) .page {
+        justify-content: flex-end;
+        padding-bottom: 2%;
+    }
 }

@@ -18,6 +18,9 @@
   margin-top: 1rem;
 
   z-index: 1;
+
+  // position: fixed;
+  // top: calc(65vh + 1rem);
 }
 
 .inputContainer {
@@ -85,6 +88,8 @@
   max-width: 95%;
 
   padding: 0.5rem;
+
+  // position: absolute;
 }
 
 .chatWindow {
