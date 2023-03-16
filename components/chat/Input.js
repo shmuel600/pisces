@@ -43,7 +43,6 @@ export default function Input() {
                 <div
                     className={`${styles.sendButton} ${sendAnimation && styles.sendButtonClick}`}
                     onClick={handleSend}
-                    onFocus={messageContent.current.focus()}
                 >
                     <SendRoundedIcon htmlColor='white' />
                 </div>

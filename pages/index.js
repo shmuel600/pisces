@@ -26,6 +26,8 @@ export default function Home() {
 
   const [socket] = React.useState(io())
 
+  const showNavigation = (Math.abs(currentHeight - defaultHeight) < defaultHeight * 0.01)
+
   // log in / sign in
   React.useEffect(() => {
     const logIn = async () => {
@@ -185,10 +187,10 @@ export default function Home() {
           {page}
         </div>
 
-        <Waves />
+        {showNavigation && <Waves />}
 
         {session ?
-          (user && <Navigation setPage={setPage} />) :
+          (user && showNavigation && <Navigation setPage={setPage} />) :
           <SignInGoogle />
         }
 
