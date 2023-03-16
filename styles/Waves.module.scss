@@ -1,3 +1,5 @@
+@import 'keyboard.module';
+
 .container {
   position: fixed;
   bottom: 0;
@@ -10,10 +12,6 @@
   margin-bottom: -7px; /*Fix for safari gap*/
   min-height: 6vh;
   max-height: 150px;
-}
-
-.wave {
-  fill: red !important;
 }
 
 .footer {

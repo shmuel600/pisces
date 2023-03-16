@@ -1,0 +1,7 @@
+@media screen and (max-width: 700px) {
+    :has(input:focus) .navigation,
+    :has(input:focus) .waves, 
+    :has(input:focus) .footer {
+        display: none !important;
+    }
+}
