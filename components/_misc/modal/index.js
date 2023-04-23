@@ -13,7 +13,7 @@ export default function Modal({ modalContent, fullScreen = false, locked = false
       style={{
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
       }}>
 
 
@@ -32,8 +32,16 @@ export default function Modal({ modalContent, fullScreen = false, locked = false
         </>
         :
         <>{/* small modal */}
-          <div className={styles.container} onClick={e => e.stopPropagation()}>
-            <div className={styles.content}>{modalContent}</div>
+          <div className={styles.smallModalLocation}>
+            {!locked &&
+              <CancelOutlinedIcon
+                onClick={() => setModalOpen(false)}
+                sx={{ cursor: 'pointer', fill: 'gray', position: 'relative', top: '2rem', left: '8rem', zIndex: 3 }}
+              />
+            }
+            <div className={styles.smallContainer} onClick={e => e.stopPropagation()}>
+              <div className={styles.content}>{modalContent}</div>
+            </div>
           </div>
           {/* gray background */}
           <div style={{

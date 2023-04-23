@@ -131,6 +131,11 @@ export default function Home() {
     }
   }, [])
 
+  // show "still in development"
+  React.useEffect(() => {
+    setModalContent({ component: "project is still in development", fullScreen: false, locked: false })
+  }, [])
+
   const sendMessage = message => {
     const newMessages = [...messages, {
       content: message,

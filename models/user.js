@@ -26,7 +26,10 @@ const user = new Schema({
         age: { type: Array, required: true },
         distance: { type: Number, required: true },
     },
-
+    since: {
+        type: Date,
+        default: Date.now
+    },
     // gender: {
     //     type: String,
     //     required: true
