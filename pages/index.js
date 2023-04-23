@@ -130,7 +130,7 @@ export default function Home() {
       navigator.virtualKeyboard.overlaysContent = true;
       navigator.virtualKeyboard.addEventListener("geometrychange", (event) => {
         const { x, y, width, height } = event.target.boundingRect;
-        setKeyboardHeight(height)
+        setKeyboardHeight(height - x)
       });
     }
     // check if height changed
