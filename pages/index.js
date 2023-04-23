@@ -132,6 +132,7 @@ export default function Home() {
         const { x, y, width, height } = event.target.boundingRect;
         // setModalContent({ component: `x: ${x} y: ${y} width: ${width} height: ${height}` })
         setKeyboardHeight(height)
+        setShowNavigation(height === 0)
       });
     }
     // check if height changed
