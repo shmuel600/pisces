@@ -16,14 +16,10 @@ import io from 'socket.io-client'
 export default function Home() {
   const { data: session } = useSession()
   const [page, setPage] = React.useState(<Pisces />)
-  const [showNavigation, setShowNavigation] = React.useState(true)
   const [modalOpen, setModalOpen] = React.useState(false)
   const [modalContent, setModalContent] = React.useState()
   const [user, setUser] = React.useState()
   const [messages, setMessages] = React.useState([])
-
-  const [defaultHeight, setDefaultHeight] = React.useState()
-  const [currentHeight, setCurrentHeight] = React.useState()
 
   const [keyboardHeight, setKeyboardHeight] = React.useState(0)
 
@@ -133,30 +129,7 @@ export default function Home() {
         setKeyboardHeight(height - y)
       });
     }
-    // check if height changed
-    const handleResize = () => {
-      if (globalThis.innerWidth < 768) {
-        setCurrentHeight(globalThis.innerHeight)
-      }
-    };
-    // get device default height and current height
-    setDefaultHeight(globalThis.innerHeight)
-    setCurrentHeight(globalThis.innerHeight)
-
-    globalThis.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => globalThis.removeEventListener('resize', handleResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  React.useEffect(() => {
-    if (currentHeight && (globalThis.innerWidth < 768)) {
-      setShowNavigation(
-        // show navigation if current height is bigger than 70% screen height
-        currentHeight > defaultHeight * 0.7
-      )
-    }
-  }, [currentHeight, defaultHeight])
 
   const sendMessage = message => {
     const newMessages = [...messages, {
@@ -203,10 +176,10 @@ export default function Home() {
           {page}
         </div>
 
-        {showNavigation && <Waves />}
+        <Waves />
 
         {session ?
-          (user && showNavigation && <Navigation setPage={setPage} />) :
+          (user && <Navigation setPage={setPage} />) :
           <SignInGoogle />
         }
 
