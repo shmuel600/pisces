@@ -16,6 +16,7 @@ import io from 'socket.io-client'
 export default function Home() {
   const { data: session } = useSession()
   const [page, setPage] = React.useState(<Pisces />)
+  const [showNavigation, setShowNavigation] = React.useState(true)
   const [modalOpen, setModalOpen] = React.useState(false)
   const [modalContent, setModalContent] = React.useState()
   const [user, setUser] = React.useState()
@@ -25,8 +26,6 @@ export default function Home() {
   const [currentHeight, setCurrentHeight] = React.useState()
 
   const [socket] = React.useState(io())
-
-  const showNavigation = (Math.abs(currentHeight - defaultHeight) < defaultHeight * 0.01)
 
   // log in / sign in
   React.useEffect(() => {
@@ -126,22 +125,28 @@ export default function Home() {
   // check if keyboard is open on mobile devices
   React.useEffect(() => {
     // get device default height and current height
-    setDefaultHeight(globalThis.innerHeight);
+    setDefaultHeight(globalThis.innerHeight)
     setCurrentHeight(globalThis.innerHeight)
-
     // check if height changed
     const handleResize = () => {
       if (globalThis.innerWidth < 768) {
         setCurrentHeight(globalThis.innerHeight)
       }
-    };
 
+    };
     globalThis.addEventListener('resize', handleResize);
     handleResize();
-
     return () => globalThis.removeEventListener('resize', handleResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  React.useEffect(() => {
+    if (currentHeight) {
+      setShowNavigation(
+        // height difference is smaller than 5% of default height
+        Math.abs(currentHeight - defaultHeight) < defaultHeight * 0.05
+      )
+    }
+  }, [currentHeight, defaultHeight])
 
   const sendMessage = message => {
     const newMessages = [...messages, {

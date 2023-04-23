@@ -1,22 +1,19 @@
-@import 'keyboard.module';
 
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  // min-height: 100vh;
-  height: 90vh;
-  width: inherit;
+  height: 100%;
+  // width: inherit;
   overflow: hidden;
 }
 
 .page {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  height: 85%;
+  height: 85vh;
   width: 100%;
 }
 
