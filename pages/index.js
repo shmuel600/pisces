@@ -51,7 +51,7 @@ export default function Home() {
         console.log(error.message, "in: index");
       }
     }
-    session && logIn();
+    session?.user && logIn();
   }, [session])
 
   // update user location
@@ -133,7 +133,17 @@ export default function Home() {
 
   // show "still in development"
   React.useEffect(() => {
-    setModalContent({ component: "project is still in development. note that some functions are not supported when using safari browser.", fullScreen: false, locked: false })
+    setModalContent({
+      component:
+        <>
+          <h4>project still in development.</h4>
+          <br />
+          <div>* note that some functions are not supported when using safari browser.</div>
+          <span>(virtual keyboard API)</span>
+        </>,
+      fullScreen: false,
+      locked: false
+    })
   }, [])
 
   const sendMessage = message => {
