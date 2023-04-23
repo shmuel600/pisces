@@ -147,6 +147,7 @@ export default function Home() {
         currentHeight > defaultHeight * 0.7
       )
     }
+    setModalContent({ component: `${currentHeight} / ${defaultHeight}` })
   }, [currentHeight, defaultHeight])
 
   const sendMessage = message => {
