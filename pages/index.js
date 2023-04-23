@@ -178,7 +178,10 @@ export default function Home() {
       <main className={styles.main}>
 
         <div className={styles.page}>
-          {page}
+          {session ?
+            page :
+            <Pisces />
+          }
         </div>
 
         <Waves />
