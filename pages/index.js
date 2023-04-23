@@ -128,8 +128,8 @@ export default function Home() {
       navigator.virtualKeyboard.overlaysContent = true;
       navigator.virtualKeyboard.addEventListener("geometrychange", (event) => {
         const { x, y, width, height } = event.target.boundingRect;
+        setModalContent({ component: `x: ${x} y: ${y} width: ${width} height: ${height}` })
       });
-      setModalContent({ component: `x: ${x} y: ${y} width: ${width} height: ${height}` })
     }
     // check if height changed
     const handleResize = () => {
