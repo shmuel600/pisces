@@ -25,6 +25,8 @@ export default function Home() {
   const [defaultHeight, setDefaultHeight] = React.useState()
   const [currentHeight, setCurrentHeight] = React.useState()
 
+  const [keyboardHeight, setKeyboardHeight] = React.useState(0)
+
   const [socket] = React.useState(io())
 
   // log in / sign in
@@ -125,10 +127,11 @@ export default function Home() {
   // check if keyboard is open on mobile devices
   React.useEffect(() => {
     if ("virtualKeyboard" in navigator) {
-      navigator.virtualKeyboard.overlaysContent = true;
+      // navigator.virtualKeyboard.overlaysContent = true;
       navigator.virtualKeyboard.addEventListener("geometrychange", (event) => {
         const { x, y, width, height } = event.target.boundingRect;
-        setModalContent({ component: `x: ${x} y: ${y} width: ${width} height: ${height}` })
+        // setModalContent({ component: `x: ${x} y: ${y} width: ${width} height: ${height}` })
+        setKeyboardHeight(height)
       });
     }
     // check if height changed
@@ -178,7 +181,8 @@ export default function Home() {
       setModalOpen,
       setModalContent,
       sendMessage,
-      messages
+      messages,
+      keyboardHeight
     }}>
 
       <Head>

@@ -5,7 +5,7 @@ import * as React from 'react'
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 
 export default function Input() {
-    const { sendMessage } = React.useContext(Context)
+    const { sendMessage, keyboardHeight } = React.useContext(Context)
     const messageContent = React.useRef()
     const [sendAnimation, setSendAnimation] = React.useState(false)
 
@@ -22,7 +22,7 @@ export default function Input() {
 
     return (
         <>
-            <div className={styles.inputArea} id='input'>
+            <div className={styles.inputArea} id='input' style={{ marginBottom: keyboardHeight }}>
 
                 {/* input */}
                 <div className={styles.inputContainer}>
