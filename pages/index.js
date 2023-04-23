@@ -184,10 +184,10 @@ export default function Home() {
           }
         </div>
 
-        <Waves />
+        {keyboardHeight !== 0 && <Waves />}
 
         {session ?
-          (user && <Navigation setPage={setPage} />) :
+          (user && keyboardHeight !== 0 && <Navigation setPage={setPage} />) :
           <SignInGoogle />
         }
 

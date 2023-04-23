@@ -22,7 +22,7 @@ export default function Input() {
 
     return (
         <>
-            <div className={styles.inputArea} id='input' style={{ marginBottom: keyboardHeight }}>
+            <div className={styles.inputArea} id='input' style={{ marginBottom: 0 }}>
 
                 {/* input */}
                 <div className={styles.inputContainer}>
