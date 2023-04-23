@@ -124,26 +124,27 @@ export default function Home() {
 
   // check if keyboard is open on mobile devices
   React.useEffect(() => {
-    // get device default height and current height
-    setDefaultHeight(globalThis.innerHeight)
-    setCurrentHeight(globalThis.innerHeight)
     // check if height changed
     const handleResize = () => {
       if (globalThis.innerWidth < 768) {
         setCurrentHeight(globalThis.innerHeight)
       }
-
     };
+    // get device default height and current height
+    setDefaultHeight(globalThis.innerHeight)
+    setCurrentHeight(globalThis.innerHeight)
+
     globalThis.addEventListener('resize', handleResize);
     handleResize();
+
     return () => globalThis.removeEventListener('resize', handleResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   React.useEffect(() => {
-    if (currentHeight) {
+    if (currentHeight && (globalThis.innerWidth < 768)) {
       setShowNavigation(
-        // height difference is smaller than 5% of default height
-        Math.abs(currentHeight - defaultHeight) < defaultHeight * 0.05
+        // show navigation if current height is bigger than 70% screen height
+        currentHeight > defaultHeight * 0.7
       )
     }
   }, [currentHeight, defaultHeight])
