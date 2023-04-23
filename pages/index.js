@@ -133,7 +133,7 @@ export default function Home() {
 
   // show "still in development"
   React.useEffect(() => {
-    setModalContent({ component: "project is still in development", fullScreen: false, locked: false })
+    setModalContent({ component: "project is still in development. note that some functions are not supported when using safari browser.", fullScreen: false, locked: false })
   }, [])
 
   const sendMessage = message => {
