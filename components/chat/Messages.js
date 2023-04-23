@@ -35,7 +35,8 @@ export default function Messages() {
     }, [isChatBottomVisible]);
 
     // scroll down function
-    const scrollToBottom = () => {
+    const scrollToBottom = (e) => {
+        e.preventDefault();
         setAutoScroll(true);
         chatBottom.current?.scrollIntoView({ behavior: "smooth" });
     }
