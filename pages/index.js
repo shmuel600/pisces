@@ -126,6 +126,10 @@ export default function Home() {
   React.useEffect(() => {
     if ("virtualKeyboard" in navigator) {
       navigator.virtualKeyboard.overlaysContent = true;
+      navigator.virtualKeyboard.addEventListener("geometrychange", (event) => {
+        const { x, y, width, height } = event.target.boundingRect;
+      });
+      setModalContent({ component: `x: ${x} y: ${y} width: ${width} height: ${height}` })
     }
     // check if height changed
     const handleResize = () => {
@@ -150,7 +154,6 @@ export default function Home() {
         currentHeight > defaultHeight * 0.7
       )
     }
-    setModalContent({ component: `${currentHeight} / ${defaultHeight}` })
   }, [currentHeight, defaultHeight])
 
   const sendMessage = message => {
