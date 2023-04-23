@@ -123,7 +123,7 @@ export default function Home() {
   // check if keyboard is open on mobile devices
   React.useEffect(() => {
     if ("virtualKeyboard" in navigator) {
-      navigator.virtualKeyboard.overlaysContent = true;
+      // navigator.virtualKeyboard.overlaysContent = true;
       navigator.virtualKeyboard.addEventListener("geometrychange", (event) => {
         const { x, y, width, height } = event.target.boundingRect;
         setKeyboardHeight(height - y)
