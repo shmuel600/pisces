@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const chat = new Schema({
-    participents: {
-        type: String
+    participants: {
+        type: Array
     },
     messages: [{
         type: Schema.Types.ObjectId,
