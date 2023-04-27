@@ -96,7 +96,7 @@ export default function Home() {
     const startSocket = () => {
       fetch(`/api/socket`);
       // TODO: create rooms
-      socket.emit('join', `${'room name'}`);
+      socket.emit('join', `${user.chats[0]}`);
 
       // listen to socket events
       socket.on('new-message', message => {
@@ -149,7 +149,14 @@ export default function Home() {
   const sendMessage = message => {
     const newMessages = [...messages, {
       content: message,
-      time: new Date(),
+      // time: new Date(),
+      time: new Date().toLocaleTimeString('en-US',
+        {
+          hour12: false,
+          hour: "numeric",
+          minute: "numeric"
+        }
+      ),
       sender: user?.name
     }]
     socket.emit('send-message', newMessages)

@@ -53,13 +53,14 @@ export default function Messages() {
                         >
                             {message?.content}
                             <div style={{ fontSize: 11 }}>
-                                {message?.time.toLocaleTimeString('en-US',
+                                {message?.time}
+                                {/* {message?.time.toLocaleTimeString('en-US',
                                     {
                                         hour12: false,
                                         hour: "numeric",
                                         minute: "numeric"
                                     }
-                                )}
+                                )} */}
                             </div>
                         </div>
                     )
