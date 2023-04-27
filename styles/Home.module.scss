@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 100%;
   // width: inherit;
   overflow: hidden;
@@ -17,6 +17,7 @@
   height: 85vh;
   width: 100%;
   margin: 2%;
+  padding: 2%;
 }
 
 @keyframes rotate {
